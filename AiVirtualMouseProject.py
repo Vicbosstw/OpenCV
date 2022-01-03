@@ -6,7 +6,7 @@ import autopy
 
 ##########################
 wCam, hCam = 640, 480
-frameR = 100 # Frame Reduction
+frameR = 100  # Frame Reduction
 smoothening = 8
 #########################
 
@@ -35,10 +35,9 @@ while True:
     # 3. Check which fingers are up
         fingers = detector.fingersUp()
     # print(fingers)
-        cv2.rectangle(img, (frameR, frameR), (wCam - frameR, hCam - frameR),(255, 0, 255), 2)
+        cv2.rectangle(img, (frameR, frameR), (wCam - frameR, hCam - frameR), (255, 0, 255), 2)
     # 4. Only Index Finger : Moving Mode
         if fingers[1] == 1 and fingers[2] == 0:
-    # 5. Convert Coordinates
             x3 = np.interp(x1, (frameR, wCam - frameR), (0, wScr))
             y3 = np.interp(y1, (frameR, hCam - frameR), (0, hScr))
     # 6. Smoothen Values
@@ -58,8 +57,7 @@ while True:
         
     # 10. Click mouse if distance short
             if length < 40:
-                cv2.circle(img, (lineInfo[4], lineInfo[5]),
-                            15, (0, 255, 0), cv2.FILLED)
+                cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0, 255, 0), cv2.FILLED)
                 autopy.mouse.click()
         # if fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 1 and fingers[4] == 1 and fingers[5] == 1:
         #     print("High Five")
@@ -67,7 +65,7 @@ while True:
     cTime = time.time()
     fps = 1 / (cTime - pTime)
     pTime = cTime
-    cv2.putText(img, str(int(fps)), (20, 50), cv2.FONT_HERSHEY_PLAIN, 3,(255, 0, 0), 3)
+    cv2.putText(img, str(int(fps)), (20, 50), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
     # 12. Display
     cv2.imshow("Image", img)
     cv2.waitKey(27)
