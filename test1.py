@@ -23,7 +23,6 @@ pTime = 0
 
 detector = htm.handDetector(detectionCon=0.75)
 
-
 while True:
     success, img = cap.read()
     img = detector.findHands(img)
